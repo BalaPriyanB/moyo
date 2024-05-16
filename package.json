@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node -r esm server.js",
+    "build": "npm run buld",
     "dev": "nodemon -r esm server.js"
   },
   "keywords": [],
