@@ -11,7 +11,7 @@ import store from "./store";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      refetchOnWindowFocus: false,
+      refetchOnWindowFocus: true,
     },
   },
 });
