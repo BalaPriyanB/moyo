@@ -29,11 +29,11 @@ const DataTable = ({
                 onSubmit={searchKeywordOnSubmitHandler}
                 className="flex flex-col justify-center w-3/4 max-w-sm space-y-3 md:flex-row md:w-full md:space-x-3 md:space-y-0"
               >
-                <div className=" relative ">
+                <div className="relative">
                   <input
                     type="text"
-                    id='"form-subscribe-Filter'
-                    className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    id="form-subscribe-Filter"
+                    className="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     placeholder={searchInputPlaceHolder}
                     onChange={searchKeywordOnChangeHandler}
                     value={searchKeyword}
@@ -86,7 +86,11 @@ const DataTable = ({
                 <Pagination
                   onPageChange={(page) => setCurrentPage(page)}
                   currentPage={currentPage}
-                  totalPageCount={JSON.parse(headers?.["x-totalpagecount"])}
+                  totalPageCount={
+                    headers && headers["x-totalpagecount"]
+                      ? JSON.parse(headers["x-totalpagecount"])
+                      : 0
+                  }
                 />
               )}
             </div>
