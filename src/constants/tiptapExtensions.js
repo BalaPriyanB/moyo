@@ -2,6 +2,7 @@ import { Color } from "@tiptap/extension-color";
 import ListItem from "@tiptap/extension-list-item";
 import TextStyle from "@tiptap/extension-text-style";
 import StarterKit from "@tiptap/starter-kit";
+import TextAlign from '@tiptap/extension-text-align';
 import Dropcursor from "@tiptap/extension-dropcursor";
 import Image from "@tiptap/extension-image";
 import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
@@ -34,4 +35,7 @@ export const extensions = [
   }),
   Dropcursor,
   Image,
+  TextAlign.configure({
+    types: ['heading', 'paragraph'],
+  }),
 ];
