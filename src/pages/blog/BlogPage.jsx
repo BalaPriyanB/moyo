@@ -14,22 +14,18 @@ let isFirstRun = true;
 
 const BlogPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-
   const searchParamsValue = Object.fromEntries([...searchParams]);
-
   const currentPage = parseInt(searchParamsValue?.page) || 1;
   const searchKeyword = searchParamsValue?.search || "";
 
   const { data, isLoading, isError, isFetching, refetch } = useQuery({
     queryFn: () => getAllPosts(searchKeyword, currentPage, 12),
-    queryKey: ["posts"],
+    queryKey: ["posts", searchKeyword, currentPage], // Ensure proper refetching
     onError: (error) => {
       toast.error(error.message);
       console.log(error);
     },
   });
-
-  console.log(data);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -41,7 +37,6 @@ const BlogPage = () => {
   }, [currentPage, searchKeyword, refetch]);
 
   const handlePageChange = (page) => {
-    // change the page's query string in the URL
     setSearchParams({ page, search: searchKeyword });
   };
 
@@ -56,9 +51,9 @@ const BlogPage = () => {
           className="w-full max-w-xl mb-10"
           onSearchKeyword={handleSearch}
         />
-        <div className=" flex flex-wrap md:gap-x-5 gap-y-5 pb-10">
+        <div className="flex flex-wrap md:gap-x-5 gap-y-5 pb-10">
           {isLoading || isFetching ? (
-            [...Array(3)].map((item, index) => (
+            [...Array(3)].map((_, index) => (
               <ArticleCardSkeleton
                 key={index}
                 className="w-full md:w-[calc(50%-20px)] lg:w-[calc(33.33%-21px)]"
@@ -66,10 +61,10 @@ const BlogPage = () => {
             ))
           ) : isError ? (
             <ErrorMessage message="Couldn't fetch the posts data" />
-          ) : data?.data.length === 0 ? (
+          ) : !data?.data?.length ? (
             <p className="text-orange-500">No Posts Found!</p>
           ) : (
-            data?.data.map((post) => (
+            data.data.map((post) => (
               <ArticleCard
                 key={post._id}
                 post={post}
@@ -78,11 +73,11 @@ const BlogPage = () => {
             ))
           )}
         </div>
-        {!isLoading && (
+        {!isLoading && data?.headers?.["x-totalpagecount"] && (
           <Pagination
-            onPageChange={(page) => handlePageChange(page)}
+            onPageChange={handlePageChange}
             currentPage={currentPage}
-            totalPageCount={JSON.parse(data?.headers?.["x-totalpagecount"])}
+            totalPageCount={parseInt(data.headers["x-totalpagecount"], 10)}
           />
         )}
       </section>
