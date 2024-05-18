@@ -12,6 +12,7 @@
     "@tiptap/extension-dropcursor": "^2.1.6",
     "@tiptap/extension-image": "^2.1.6",
     "@tiptap/extension-text-style": "^2.0.4",
+    "@tiptap/extension-text-align": "^2.4.0",
     "@tiptap/html": "^2.0.3",
     "@tiptap/pm": "^2.0.3",
     "@tiptap/react": "^2.0.3",
