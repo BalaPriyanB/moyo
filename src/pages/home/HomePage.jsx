@@ -8,7 +8,6 @@ import Hero from "./container/Hero";
 const HomePage = () => {
   return (
     <MainLayout>
-      <Hero />
       <Articles />
       <CTA />
     </MainLayout>
