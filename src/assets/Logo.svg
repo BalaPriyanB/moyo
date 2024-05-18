@@ -1,3 +1,7 @@
-<svg className="w-90 h-28" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 28">
-  <text x="0" y="20" className="text-blue-800 text-2xl font-bold">Tamil Loggers</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="90" height="28" viewBox="0 0 90 28">
+  <style>
+    /* Define the Poppins font family */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+  </style>
+  <text x="0" y="20" class="text-blue-800 text-2xl font-bold" style="font-family: 'Poppins', sans-serif;">Tamil Loggers</text>
 </svg>
