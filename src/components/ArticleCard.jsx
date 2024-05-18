@@ -1,11 +1,10 @@
 import React from "react";
-import { BsCheckLg } from "react-icons/bs";
-import { AiOutlineClose } from "react-icons/ai";
-
-import { images, stables } from "../constants";
 import { Link } from "react-router-dom";
+import { images, stables } from "../constants"; // Ensure this import path is correct
 
 const ArticleCard = ({ post, className }) => {
+  const postDate = new Date(post.createdAt);
+
   return (
     <div
       className={`rounded-xl overflow-hidden shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px] ${className}`}
@@ -14,10 +13,10 @@ const ArticleCard = ({ post, className }) => {
         <img
           src={
             post.photo
-              ? stables.UPLOAD_FOLDER_BASE_URL + post.photo
+              ? `${stables.UPLOAD_FOLDER_BASE_URL}${post.photo}`
               : images.samplePostImage
           }
-          alt="title"
+          alt={post.title || "Post Image"}
           className="w-full object-cover object-center h-auto md:h-52 lg:h-48 xl:h-60"
         />
       </Link>
@@ -30,13 +29,10 @@ const ArticleCard = ({ post, className }) => {
             {post.caption}
           </p>
         </Link>
-          <span className="font-bold text-dark-light italic text-sm md:text-base">
-            {new Date(post.createdAt).getDate()}{" "}
-            {new Date(post.createdAt).toLocaleString("default", {
-              month: "long",
-            })}
-          </span>
-        </div>
+        <span className="font-bold text-dark-light italic text-sm md:text-base">
+          {postDate.getDate()}{" "}
+          {postDate.toLocaleString("default", { month: "long" })}
+        </span>
       </div>
     </div>
   );
