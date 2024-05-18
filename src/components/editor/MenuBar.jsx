@@ -9,6 +9,7 @@ import {
   AiOutlineStrikethrough,
   AiOutlineUndo,
   AiOutlineUnorderedList,
+  AiOutlineAlignCenter,
 } from "react-icons/ai";
 import { BiParagraph } from "react-icons/bi";
 import { FiCode } from "react-icons/fi";
@@ -180,6 +181,12 @@ const MenuBar = ({ editor }) => {
         className={`editor-btn`}
       >
         <AiOutlineRedo />
+      </button>
+      <button
+        onClick={() => editor.chain().focus().setTextAlign("center").run()}
+        className={`editor-btn ${editor.isActive({ textAlign: "center" }) && "active-editor-btn"}`}
+      >
+        <AiOutlineAlignCenter />
       </button>
     </div>
   );
