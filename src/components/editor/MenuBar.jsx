@@ -16,6 +16,8 @@ import { FiCode } from "react-icons/fi";
 import { MdOutlineLayersClear } from "react-icons/md";
 import { PiCodeBlock, PiQuotes, PiImageSquareBold } from "react-icons/pi";
 import { TbSpacingVertical } from "react-icons/tb";
+import TextAlign from '@tiptap/extension-text-align';
+
 
 const MenuBar = ({ editor }) => {
   const addImage = useCallback(() => {
