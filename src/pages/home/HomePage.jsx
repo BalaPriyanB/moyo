@@ -9,7 +9,6 @@ const HomePage = () => {
   return (
     <MainLayout>
       <Articles />
-      <CTA />
     </MainLayout>
   );
 };
