@@ -25,7 +25,7 @@ const Articles = () => {
           [...Array(3)].map((_, index) => (
             <ArticleCardSkeleton
               key={index}
-              className="w-full md:w-[calc(50%-20px)] lg:w-[calc(33.33%-21px)] bg-dark-hard text-dark-soft"
+              className="w-full md:w-[calc(50%-20px)] lg:w-[calc(33.33%-21px)]"
             />
           ))
         ) : isError ? (
@@ -39,7 +39,7 @@ const Articles = () => {
             <ArticleCard
               key={post._id}
               post={post}
-              className="w-full md:w-[calc(50%-20px)] lg:w-[calc(33.33%-21px)] bg-dark-hard text-dark-soft"
+              className="w-full md:w-[calc(50%-20px)] lg:w-[calc(33.33%-21px)]"
             />
           ))
         )}
