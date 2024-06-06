@@ -15,42 +15,42 @@ const Footer = () => {
     <section className="bg-dark-hard">
       <footer className="container mx-auto grid grid-cols-10 px-5 py-10 gap-y-10 gap-x-5 md:pt-20 md:grid-cols-12 lg:grid-cols-10 lg:gap-x-10">
         <div className="col-span-5 md:col-span-4 lg:col-span-2">
-          <h3 className="text-dark-light font-bold md:text-lg">Product</h3>
+          <h3 className="text-dark-light font-bold md:text-lg">Movies</h3>
           <ul className="text-[#959EAD] text-sm mt-5 space-y-4 md:text-base">
             <li>
-              <a href="/">Landingpage</a>
+              <a href="/">KOLLYWOOD</a>
             </li>
             <li>
-              <a href="/">Features</a>
+              <a href="/">BOLLYWOOD</a>
             </li>
             <li>
-              <a href="/">Documentation</a>
+              <a href="/">MOLLYWOOD</a>
             </li>
             <li>
-              <a href="/">Referral Program</a>
+              <a href="/">TOLLYWOOD</a>
             </li>
             <li>
-              <a href="/">Pricing</a>
+              <a href="/">HOLLYWOOD</a>
             </li>
           </ul>
         </div>
         <div className="col-span-5 md:col-span-4 lg:col-span-2">
-          <h3 className="text-dark-light font-bold md:text-lg">Services</h3>
+          <h3 className="text-dark-light font-bold md:text-lg">LANGUAGE</h3>
           <ul className="text-[#959EAD] text-sm mt-5 space-y-4 md:text-base">
             <li>
-              <a href="/">Documentation</a>
+              <a href="/">TAMIL</a>
             </li>
             <li>
-              <a href="/">Design</a>
+              <a href="/">ENGLISH </a>
             </li>
             <li>
-              <a href="/">Themes</a>
+              <a href="/">HINDI</a>
             </li>
             <li>
-              <a href="/">Illustrations</a>
+              <a href="/">TELUGU</a>
             </li>
             <li>
-              <a href="/">UI Kit</a>
+              <a href="/">MALAYALAM</a>
             </li>
           </ul>
         </div>
@@ -127,7 +127,7 @@ const Footer = () => {
             <AiFillHeart className="w-7 h-auto" />
           </div>
           <p className="font-bold italic text-dark-light">
-            Copyright © 2023. Crafted with love.
+            Copyright © 2023. Tamilloggers.
           </p>
         </div>
       </footer>
