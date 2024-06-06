@@ -9,7 +9,9 @@ import { logout } from "../store/actions/user";
 
 const navItemsInfo = [
   { name: "Home", type: "link", href: "/" },
-  { name: "Blog", type: "link", href: "/blog" },
+  { name: "Movies", type: "link", href: "/blog" },
+  { name: "Latest", type: "link", href: "/pricing" },
+  { name: "Faq", type: "link", href: "/faq" },
   {
     name: "Pages",
     type: "dropdown",
@@ -18,8 +20,6 @@ const navItemsInfo = [
       { title: "Contact us", href: "/contact" },
     ],
   },
-  { name: "Pricing", type: "link", href: "/pricing" },
-  { name: "Faq", type: "link", href: "/faq" },
 ];
 
 const NavItem = ({ item }) => {
