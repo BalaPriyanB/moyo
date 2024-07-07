@@ -7,7 +7,7 @@ const ArticleCard = ({ post, className }) => {
 
   return (
     <div
-      className={`rounded-xl overflow-hidden shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px] bg-dark-bg ${className}`}
+      className={`rounded-xl overflow-hidden shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px] bg-dark-soft ${className}`}
     >
       <Link to={`/blog/${post.slug}`}>
         <img
