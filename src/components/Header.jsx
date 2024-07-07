@@ -166,8 +166,9 @@ const Header = () => {
             </button>
           )}
         </div>
-        <hr className="w-full border-t border-white mt-4" />
+        
       </header>
+    <hr className="w-full border-t border-white mt-4" />
     </section>
   );
 };
