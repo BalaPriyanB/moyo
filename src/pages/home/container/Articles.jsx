@@ -19,7 +19,7 @@ const Articles = () => {
   });
 
   return (
-    <section className="flex flex-col container mx-auto px-5 py-10 bg-dark-hard text-white">
+    <section className="flex flex-col container mx-auto px-5 py-10 bg-dark-soft text-white">
       <div className="flex flex-wrap md:gap-x-5 gap-y-5 pb-10">
         {isLoading ? (
           [...Array(3)].map((_, index) => (
@@ -46,7 +46,7 @@ const Articles = () => {
       </div>
       <Link
         to="/blog"
-        className="mx-auto flex items-center gap-x-2 font-bold text-primary border-2 border-primary px-6 py-3 rounded-lg dark text-white"
+        className="mx-auto flex items-center gap-x-2 font-bold text-white border-2 border-primary px-6 py-3 rounded-lg dark text-white"
       >
         <span>More articles</span>
         <FaArrowRight className="w-3 h-3" />
