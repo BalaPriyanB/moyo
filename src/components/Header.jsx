@@ -4,7 +4,6 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
-import { images } from "../constants";
 import { logout } from "../store/actions/user";
 
 const navItemsInfo = [
@@ -92,7 +91,7 @@ const Header = () => {
       <header className="container mx-auto px-5 py-4 flex flex-col items-center">
         <div className="w-full flex justify-center mb-4">
           <Link to="/">
-            <img className="w-84" src={images.Logo} alt="logo" />
+            <h1 className="text-white text-3xl font-bold">TAMILLOGGERS</h1>
           </Link>
         </div>
         <div className="w-full flex justify-center lg:hidden z-50">
