@@ -6,14 +6,14 @@ module.exports = {
       colors: {
         primary: "#1565D8",
         dark: {
-          light: "#5A7184",
-          hard: "#0D2436",
-          soft: "#183B56",
+          light: "#999999",
+          hard: "#000000",
+          soft: "#141414",
         },
       },
       fontFamily: {
-        opensans: ["'Open Sans'", "sans-serif"],
-        roboto: ["'Roboto'", "sans-serif"],
+        opensans: ["'Quicksand'", "sans-serif"],
+        roboto: ["'Quicksand'", "sans-serif"],
       },
     },
   },
