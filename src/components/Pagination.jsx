@@ -27,12 +27,12 @@ const Pagination = ({
   let lastPage = paginationRange[paginationRange.length - 1];
 
   return (
-    <div className="flex flex-col items-center px-5 py-5 bg-white xs:flex-row xs:justify-between">
+    <div className="flex flex-col items-center px-5 py-5 bg-dark-soft xs:flex-row xs:justify-between">
       <div className="flex items-center">
         <button
           disabled={currentPage === 1}
           type="button"
-          className="w-full p-4 text-base text-gray-600 bg-white border rounded-l-xl hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-60"
+          className="w-full p-4 text-base text-gray-600 bg-dark-soft border rounded-l-xl hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-60"
           onClick={onPrevious}
         >
           <svg
@@ -49,7 +49,7 @@ const Pagination = ({
         {paginationRange.map((pageNumber) => {
           if (pageNumber === DOTS) {
             return (
-              <button className="cursor-default w-full px-4 py-2 text-base bg-white border">
+              <button className="cursor-default w-full px-4 py-2 text-base bg-dark-soft border">
                 &#8230;
               </button>
             );
@@ -62,7 +62,7 @@ const Pagination = ({
               className={`w-full px-4 py-2 text-base border ${
                 pageNumber === currentPage
                   ? "text-white bg-blue-500"
-                  : "text-gray-600 bg-white hover:bg-gray-100"
+                  : "text-gray-600 bg-dark-soft hover:bg-gray-100"
               }`}
               onClick={() => onPageChange(pageNumber)}
             >
@@ -74,7 +74,7 @@ const Pagination = ({
         <button
           disabled={currentPage === lastPage}
           type="button"
-          className="w-full p-4 text-base text-gray-600 bg-white border-t border-b border-r rounded-r-xl hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-60"
+          className="w-full p-4 text-base text-gray-600 bg-dark-soft border-t border-b border-r rounded-r-xl hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-60"
           onClick={onNext}
         >
           <svg
