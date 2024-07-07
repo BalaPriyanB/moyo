@@ -26,16 +26,14 @@ const NavItem = ({ item }) => {
   const [dropdown, setDropdown] = useState(false);
 
   const toggleDropdownHandler = () => {
-    setDropdown((curState) => {
-      return !curState;
-    });
+    setDropdown((curState) => !curState);
   };
 
   return (
     <li className="relative group">
       {item.type === "link" ? (
         <>
-          <Link to={item.href} className="px-4 py-2">
+          <Link to={item.href} className="px-4 py-2 text-white">
             {item.name}
           </Link>
           <span className="cursor-pointer text-blue-500 absolute transition-all duration-500 font-bold right-0 top-0 group-hover:right-[90%] opacity-0 group-hover:opacity-100">
@@ -45,7 +43,7 @@ const NavItem = ({ item }) => {
       ) : (
         <div className="flex flex-col items-center">
           <button
-            className="px-4 py-2 flex gap-x-1 items-center"
+            className="px-4 py-2 flex gap-x-1 items-center text-white"
             onClick={toggleDropdownHandler}
           >
             <span>{item.name}</span>
@@ -82,9 +80,7 @@ const Header = () => {
   const [profileDrowpdown, setProfileDrowpdown] = useState(false);
 
   const navVisibilityHandler = () => {
-    setNavIsVisible((curState) => {
-      return !curState;
-    });
+    setNavIsVisible((curState) => !curState);
   };
 
   const logoutHandler = () => {
@@ -93,16 +89,15 @@ const Header = () => {
 
   return (
     <section className="sticky top-0 left-0 right-0 z-50 bg-dark-hard text-white">
-      <header className="container mx-auto px-5 flex justify-between py-4 items-center">
-        <Link to="/" className="mx-auto">
-          <img className="w-84" src={images.Logo} alt="logo" />
-        </Link>
-        <div className="lg:hidden z-50">
+      <header className="container mx-auto px-5 py-4 flex flex-col items-center">
+        <div className="w-full flex justify-center mb-4">
+          <Link to="/">
+            <img className="w-84" src={images.Logo} alt="logo" />
+          </Link>
+        </div>
+        <div className="w-full flex justify-center lg:hidden z-50">
           {navIsVisible ? (
-            <AiOutlineClose
-              className="w-6 h-6"
-              onClick={navVisibilityHandler}
-            />
+            <AiOutlineClose className="w-6 h-6" onClick={navVisibilityHandler} />
           ) : (
             <AiOutlineMenu className="w-6 h-6" onClick={navVisibilityHandler} />
           )}
