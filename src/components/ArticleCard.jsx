@@ -22,14 +22,14 @@ const ArticleCard = ({ post, className }) => {
       </Link>
       <div className="p-5">
         <Link to={`/blog/${post.slug}`}>
-          <h2 className="font-roboto font-bold text-xl text-dark-soft md:text-2xl lg:text-[28px] text-dark-light">
+          <h2 className="font-roboto font-bold text-xl text-dark-soft md:text-2xl lg:text-[28px] text-white">
             {post.title}
           </h2>
-          <p className="text-dark-light mt-3 text-sm md:text-lg text-dark-light">
+          <p className="text-white mt-3 text-sm md:text-lg text-white">
             {post.caption}
           </p>
         </Link>
-        <span className="font-bold text-dark-light italic text-sm md:text-base">
+        <span className="font-bold text-white italic text-sm md:text-base">
           {postDate.getDate()}{" "}
           {postDate.toLocaleString("default", { month: "long" })}
         </span>
