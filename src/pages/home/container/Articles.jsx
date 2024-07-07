@@ -46,7 +46,7 @@ const Articles = () => {
       </div>
       <Link
         to="/blog"
-        className="mx-auto flex items-center gap-x-2 font-bold text-white border-2 border-primary px-6 py-3 rounded-lg dark text-white"
+        className="mx-auto flex items-center gap-x-2 font-bold border-2 border-primary px-6 py-3 rounded-lg dark text-white"
       >
         <span>More articles</span>
         <FaArrowRight className="w-3 h-3" />
