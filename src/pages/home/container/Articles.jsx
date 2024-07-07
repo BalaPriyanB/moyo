@@ -29,9 +29,9 @@ const Articles = () => {
             />
           ))
         ) : isError ? (
-          <ErrorMessage message="Couldn't fetch the posts data" />
+          <ErrorMessage message="Couldn't fetch the posts data" className="text-white" />
         ) : !data || !Array.isArray(data.data) ? (
-          <ErrorMessage message="Posts data is not in the expected format" />
+          <ErrorMessage message="Posts data is not in the expected format" className="text-white" />
         ) : data.data.length === 0 ? (
           <p className="text-orange-500">No Posts Found!</p>
         ) : (
@@ -39,14 +39,14 @@ const Articles = () => {
             <ArticleCard
               key={post._id}
               post={post}
-              className="w-full md:w-[calc(50%-20px)] lg:w-[calc(33.33%-21px)] dark"
+              className="w-full md:w-[calc(50%-20px)] lg:w-[calc(33.33%-21px)] dark text-white"
             />
           ))
         )}
       </div>
       <Link
         to="/blog"
-        className="mx-auto flex items-center gap-x-2 font-bold text-primary border-2 border-primary px-6 py-3 rounded-lg dark"
+        className="mx-auto flex items-center gap-x-2 font-bold text-primary border-2 border-primary px-6 py-3 rounded-lg dark text-white"
       >
         <span>More articles</span>
         <FaArrowRight className="w-3 h-3" />
