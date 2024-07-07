@@ -19,7 +19,7 @@ import BlogPage from "./pages/blog/BlogPage";
 
 function App() {
   return (
-    <div className="App font-opensans">
+    <div className="App font-opensans bg-dark-hard">
       <Routes>
         <Route index path="/" element={<HomePage />} />
         <Route path="/blog" element={<BlogPage />} />
