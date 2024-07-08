@@ -1,14 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
-import ArticleCard from "./ArticleCard";
-import ArticleCardSkeleton from "./ArticleCardSkeleton";
-import ErrorMessage from "../../components/ErrorMessage";
-import { useQuery } from "@tanstack/react-query";
-import { getAllPosts } from "../../services/index/posts";
-import { images } from "../../constants";
 
-const ArticleList = () => {
+import ArticleCard from "../../../components/ArticleCard";
+import { useQuery } from "@tanstack/react-query";
+import { getAllPosts } from "../../../services/index/posts";
+import { toast } from "react-hot-toast";
+import ArticleCardSkeleton from "../../../components/ArticleCardSkeleton";
+import ErrorMessage from "../../../components/ErrorMessage";
+
+const Articles = () => {
   const { data, isLoading, isError } = useQuery({
     queryFn: getAllPosts,
     queryKey: "posts",
@@ -51,4 +51,4 @@ const ArticleList = () => {
   );
 };
 
-export default ArticleList;
+export default Articles;
