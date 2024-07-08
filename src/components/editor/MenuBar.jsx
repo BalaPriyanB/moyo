@@ -9,15 +9,13 @@ import {
   AiOutlineStrikethrough,
   AiOutlineUndo,
   AiOutlineUnorderedList,
-  AiOutlineAlignCenter,
+  AiOutlineTable,
 } from "react-icons/ai";
 import { BiParagraph } from "react-icons/bi";
 import { FiCode } from "react-icons/fi";
 import { MdOutlineLayersClear } from "react-icons/md";
 import { PiCodeBlock, PiQuotes, PiImageSquareBold } from "react-icons/pi";
 import { TbSpacingVertical } from "react-icons/tb";
-import TextAlign from '@tiptap/extension-text-align';
-
 
 const MenuBar = ({ editor }) => {
   const addImage = useCallback(() => {
@@ -33,7 +31,7 @@ const MenuBar = ({ editor }) => {
   }
 
   return (
-    <div className="border border-slate-300 rounded-lg p-5 sticky top-3 left-0 right-0 bg-white z-10 flex gap-0.5 flex-wrap">
+    <div className="border border-slate-300 rounded-lg p-5 sticky top-3 left-0 right-0 bg-dark-soft z-10 flex gap-0.5 flex-wrap text-white">
       <button
         onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
         className={`editor-btn font-black ${editor.isActive("heading", { level: 1 }) && "active-editor-btn"
@@ -75,6 +73,13 @@ const MenuBar = ({ editor }) => {
           }`}
       >
         H6
+      </button>
+      <button>
+        onClick={() => editor.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run(),}
+        className={`editor-btn ${editor.isActive("insert table") && "active-editor-btn"
+              }`}
+        <AiOutlineTable />
+        
       </button>
       <button
         onClick={() => editor.chain().focus().toggleBold().run()}
@@ -183,12 +188,6 @@ const MenuBar = ({ editor }) => {
         className={`editor-btn`}
       >
         <AiOutlineRedo />
-      </button>
-      <button
-        onClick={() => editor.chain().focus().setTextAlign("center").run()}
-        className={`editor-btn ${editor.isActive({ textAlign: "center" }) && "active-editor-btn"}`}
-      >
-        <AiOutlineAlignCenter />
       </button>
     </div>
   );
