@@ -9,7 +9,6 @@ import {
   AiOutlineStrikethrough,
   AiOutlineUndo,
   AiOutlineUnorderedList,
-  AiOutlineTable,
 } from "react-icons/ai";
 import { BiParagraph } from "react-icons/bi";
 import { FiCode } from "react-icons/fi";
@@ -73,13 +72,6 @@ const MenuBar = ({ editor }) => {
           }`}
       >
         H6
-      </button>
-      <button>
-        onClick={() => editor.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run(),}
-        className={`editor-btn ${editor.isActive("insert table") && "active-editor-btn"
-              }`}
-        <AiOutlineTable />
-        
       </button>
       <button
         onClick={() => editor.chain().focus().toggleBold().run()}
