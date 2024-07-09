@@ -16,6 +16,7 @@ let isFirstRun = true;
 const BlogPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const searchParamsValue = Object.fromEntries([...searchParams]);
+  const searchKeyword = searchParamsValue?.search || "";
   const currentPage = parseInt(searchParamsValue?.page) || 1;
 
   const { data, isLoading, isError, isFetching, refetch } = useQuery({
