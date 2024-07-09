@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 import { getAllPosts } from "../../services/index/posts";
@@ -8,7 +8,6 @@ import ArticleCard from "../../components/ArticleCard";
 import MainLayout from "../../components/MainLayout";
 import Pagination from "../../components/Pagination";
 import { useSearchParams } from "react-router-dom";
-import Search from "../../components/Search";
 
 let isFirstRun = true;
 
@@ -20,7 +19,7 @@ const BlogPage = () => {
 
   const { data, isLoading, isError, isFetching, refetch } = useQuery({
     queryFn: () => getAllPosts(searchKeyword, currentPage, 12),
-    queryKey: ["posts", searchKeyword, currentPage], // Ensure proper refetching
+    queryKey: ["posts", searchKeyword, currentPage],
     onError: (error) => {
       toast.error(error.message);
       console.log(error);
@@ -40,17 +39,9 @@ const BlogPage = () => {
     setSearchParams({ page, search: searchKeyword });
   };
 
-  const handleSearch = ({ searchKeyword }) => {
-    setSearchParams({ page: 1, search: searchKeyword });
-  };
-
   return (
     <MainLayout>
       <section className="flex flex-col container mx-auto px-5 py-10">
-        <Search
-          className="w-full max-w-xl mb-10"
-          onSearchKeyword={handleSearch}
-        />
         <div className="flex flex-wrap md:gap-x-5 gap-y-5 pb-10">
           {isLoading || isFetching ? (
             [...Array(3)].map((_, index) => (
