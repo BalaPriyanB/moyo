@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 
 import { logout } from "../store/actions/user";
-import Search from "../../components/Search";
+import Search from "./Search";
 
 const navItemsInfo = [
   { name: "Home", type: "link", href: "/" },
