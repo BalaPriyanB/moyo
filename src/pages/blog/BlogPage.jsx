@@ -8,6 +8,8 @@ import ArticleCard from "../../components/ArticleCard";
 import MainLayout from "../../components/MainLayout";
 import Pagination from "../../components/Pagination";
 import { useSearchParams } from "react-router-dom";
+import Search from "../../components/Search";
+
 
 let isFirstRun = true;
 
