@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 
 import { logout } from "../store/actions/user";
 import Search from "../../components/Search";
@@ -23,6 +23,9 @@ const navItemsInfo = [
 ];
 
 const NavItem = ({ item }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchParamsValue = Object.fromEntries([...searchParams]);
+  const searchKeyword = searchParamsValue?.search || "";
   const [dropdown, setDropdown] = useState(false);
 
   const toggleDropdownHandler = () => {
@@ -73,8 +76,12 @@ const NavItem = ({ item }) => {
 };
 
 const Header = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchParamsValue = Object.fromEntries([...searchParams]);
+  const searchKeyword = searchParamsValue?.search || "";
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const [navIsVisible, setNavIsVisible] = useState(false);
   const userState = useSelector((state) => state.user);
   const [profileDrowpdown, setProfileDrowpdown] = useState(false);
