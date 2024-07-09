@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 import { logout } from "../store/actions/user";
+import Search from "../../components/Search";
 
 const navItemsInfo = [
   { name: "Home", type: "link", href: "/" },
@@ -86,13 +87,20 @@ const Header = () => {
     dispatch(logout());
   };
 
+  const handleSearch = ({ searchKeyword }) => {
+    setSearchParams({ page: 1, search: searchKeyword });
+  };
+
   return (
     <section className="sticky top-0 left-0 right-0 z-50 bg-dark-hard text-white">
-      <header className="container mx-auto px-5 py-4 flex flex-col items-center">
-        <div className="w-full flex justify-center mb-4">
-          <Link to="/">
+      <header className="container mx-auto px-5 py-4 flex flex-col items-center lg:flex-row lg:justify-between">
+        <div className="w-full flex justify-center lg:justify-start items-center mb-4 lg:mb-0">
+          <Link to="/" className="flex items-center">
             <h1 className="text-white text-3xl font-bold">TAMILLOGGERS</h1>
           </Link>
+          <div className="ml-4 w-full max-w-xl hidden lg:block">
+            <Search onSearchKeyword={handleSearch} />
+          </div>
         </div>
         <div className="w-full flex justify-center lg:hidden z-50">
           {navIsVisible ? (
@@ -166,9 +174,8 @@ const Header = () => {
             </button>
           )}
         </div>
-        
       </header>
-    <hr className="w-full border-t border-white mt-4" />
+      <hr className="w-full border-t border-white mt-4" />
     </section>
   );
 };
