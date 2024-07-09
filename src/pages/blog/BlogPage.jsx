@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 import { getAllPosts } from "../../services/index/posts";
@@ -15,7 +15,6 @@ const BlogPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const searchParamsValue = Object.fromEntries([...searchParams]);
   const currentPage = parseInt(searchParamsValue?.page) || 1;
-  const searchKeyword = searchParamsValue?.search || "";
 
   const { data, isLoading, isError, isFetching, refetch } = useQuery({
     queryFn: () => getAllPosts(searchKeyword, currentPage, 12),
