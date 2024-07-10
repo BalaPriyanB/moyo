@@ -25,11 +25,8 @@ const ArticleCard = ({ post, className }) => {
           <h2 className="font-roboto font-bold text-dark-soft text-white">
             {post.title}
           </h2>
-          <p className="text-white text-white">
-            {post.caption}
-          </p>
         </Link>
-        <span className="font-bold text-white italic">
+        <span className="f text-white italic">
           {postDate.getDate()}{" "}
           {postDate.toLocaleString("default", { month: "long" })}
         </span>
