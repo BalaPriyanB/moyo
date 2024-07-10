@@ -20,12 +20,12 @@ const Articles = () => {
 
   return (
     <section className="flex flex-col container mx-auto px-5 py-10 bg-dark-hard text-white">
-      <div className="flex flex-wrap md:gap-x-5 gap-y-5 pb-10">
+      <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
         {isLoading ? (
           [...Array(3)].map((_, index) => (
             <ArticleCardSkeleton
               key={index}
-              className="w-full md:w-[calc(50%-20px)] lg:w-[calc(33.33%-21px)] dark"
+              className="w-full dark"
             />
           ))
         ) : isError ? (
@@ -39,7 +39,7 @@ const Articles = () => {
             <ArticleCard
               key={post._id}
               post={post}
-              className="w-full md:w-[calc(50%-20px)] lg:w-[calc(33.33%-21px)] dark text-white"
+              className="w-full dark text-white"
             />
           ))
         )}
