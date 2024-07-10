@@ -17,12 +17,12 @@ const Articles = () => {
 
   return (
     <section className="container mx-auto px-5 py-10 bg-dark-hard text-white">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 pb-10">
+      <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
         {isLoading ? (
           [...Array(5)].map((_, index) => (
             <ArticleCardSkeleton
               key={index}
-              className="w-full md:w-[calc(20%-20px)] lg:w-[calc(20%-21px)] dark"
+              className="w-full dark"
             />
           ))
         ) : isError ? (
@@ -36,7 +36,7 @@ const Articles = () => {
             <ArticleCard
               key={post._id}
               post={post}
-              className="w-full md:w-[calc(20%-20px)] lg:w-[calc(20%-21px)] dark text-white"
+              className="w-full dark text-white"
             />
           ))
         )}
