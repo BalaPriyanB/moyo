@@ -1,6 +1,5 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
-
 import ArticleCard from "../../../components/ArticleCard";
 import { useQuery } from "@tanstack/react-query";
 import { getAllPosts } from "../../../services/index/posts";
@@ -11,15 +10,19 @@ import { Link } from "react-router-dom";
 
 const Articles = () => {
   const { data, isLoading, isError } = useQuery({
-    queryFn: getAllPosts,
-    queryKey: "posts",
+    queryFn: () => getAllPosts("", 1, 6),
+    queryKey: ["posts"],
+    onError: (error) => {
+      toast.error(error.message);
+      console.log(error);
+    },
   });
 
   return (
-    <section className="container mx-auto px-5 py-10 bg-dark-hard text-white">
-      <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
+    <section className="grid grid-cols-2 container bg-dark-hard text-white">
+      <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 pb-10">
         {isLoading ? (
-          [...Array(5)].map((_, index) => (
+          [...Array(3)].map((_, index) => (
             <ArticleCardSkeleton
               key={index}
               className="w-full dark"
@@ -43,9 +46,9 @@ const Articles = () => {
       </div>
       <Link
         to="/blog"
-        className="mx-auto flex items-center gap-2 font-bold border-2 border-primary px-6 py-3 rounded-lg dark text-white"
+        className="grid items-center gap-4 font-bold border-2 border-primary rounded-lg dark text-white"
       >
-        <span>More Movies</span>
+        <span>More articles</span>
         <FaArrowRight className="w-3 h-3" />
       </Link>
     </section>
