@@ -10,18 +10,17 @@ import Pagination from "../../components/Pagination";
 import { useSearchParams } from "react-router-dom";
 import Search from "../../components/Search";
 
-
 let isFirstRun = true;
 
 const BlogPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const searchParamsValue = Object.fromEntries([...searchParams]);
-  const searchKeyword = searchParamsValue?.search || "";
   const currentPage = parseInt(searchParamsValue?.page) || 1;
+  const searchKeyword = searchParamsValue?.search || "";
 
   const { data, isLoading, isError, isFetching, refetch } = useQuery({
     queryFn: () => getAllPosts(searchKeyword, currentPage, 12),
-    queryKey: ["posts", searchKeyword, currentPage],
+    queryKey: ["posts", searchKeyword, currentPage], // Ensure proper refetching
     onError: (error) => {
       toast.error(error.message);
       console.log(error);
@@ -41,15 +40,23 @@ const BlogPage = () => {
     setSearchParams({ page, search: searchKeyword });
   };
 
+  const handleSearch = ({ searchKeyword }) => {
+    setSearchParams({ page: 1, search: searchKeyword });
+  };
+
   return (
     <MainLayout>
       <section className="flex flex-col container mx-auto px-5 py-10">
-        <div className="flex flex-wrap md:gap-x-5 gap-y-5 pb-10">
+        <Search
+          className="w-full max-w-xl mb-10"
+          onSearchKeyword={handleSearch}
+        />
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
           {isLoading || isFetching ? (
-            [...Array(3)].map((_, index) => (
+            [...Array(10)].map((_, index) => (
               <ArticleCardSkeleton
                 key={index}
-                className="w-full md:w-[calc(50%-20px)] lg:w-[calc(33.33%-21px)]"
+                className="w-full"
               />
             ))
           ) : isError ? (
@@ -61,7 +68,7 @@ const BlogPage = () => {
               <ArticleCard
                 key={post._id}
                 post={post}
-                className="w-full md:w-[calc(50%-20px)] lg:w-[calc(33.33%-21px)]"
+                className="w-full"
               />
             ))
           )}
