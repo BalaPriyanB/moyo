@@ -18,6 +18,11 @@ import {
   filterCategories,
 } from "../../../../utils/multiSelectTagUtils";
 
+import {
+  categoryToOption,
+  filterCategories,
+} from "../../../../utils/multiSelectTagsUtils.js";
+
 const promiseOptions = async (inputValue) => {
   const { data: categoriesData } = await getAllCategories();
   return filterCategories(inputValue, categoriesData);
