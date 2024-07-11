@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import Editor from "../../../../components/editor/Editor";
 import MultiSelectTagDropdown from "../../components/select-dropdown/MultiSelectTagDropdown";
 import { getAllCategories } from "../../../../services/index/postCategories";
+import { getAllTags } from "../../../../services/index/postTags";
 import {
   categoryToOption,
   filterCategories,
@@ -21,6 +22,12 @@ const promiseOptions = async (inputValue) => {
   const { data: categoriesData } = await getAllCategories();
   return filterCategories(inputValue, categoriesData);
 };
+
+const promiseOptions = async (inputValue) => {
+  const { data: tagsData } = await getAllTags();
+  return filterTags(inputValue, tagsData);
+};
+
 
 const EditPost = () => {
   const { slug } = useParams();
@@ -42,6 +49,7 @@ const EditPost = () => {
     onSuccess: (data) => {
       setInitialPhoto(data?.photo);
       setCategories(data.categories.map((item) => item._id));
+      setTags(data.tags.map((item) => item._id));
       setTitle(data.title);
       setTags(data.tags);
     },
@@ -223,16 +231,12 @@ const EditPost = () => {
                 <span className="d-label-text">tags</span>
               </label>
               {isPostDataLoaded && (
-                <CreatableSelect
-                  defaultValue={data.tags.map((tag) => ({
-                    value: tag,
-                    label: tag,
-                  }))}
-                  isMulti
+                <MultiSelectTagDropdown
+                  loadOptions={promiseOptions}
+                  defaultValue={data.tags.map(tagyToOption)}
                   onChange={(newValue) =>
                     setTags(newValue.map((item) => item.value))
                   }
-                  className="relative z-20"
                 />
               )}
             </div>
