@@ -23,7 +23,7 @@ const promiseOptions = async (inputValue) => {
   return filterCategories(inputValue, categoriesData);
 };
 
-const promiseOptions = async (inputValue) => {
+const tagpOptions = async (inputValue) => {
   const { data: tagsData } = await getAllTags();
   return filterTags(inputValue, tagsData);
 };
@@ -232,7 +232,7 @@ const EditPost = () => {
               </label>
               {isPostDataLoaded && (
                 <MultiSelectTagDropdown
-                  loadOptions={promiseOptions}
+                  loadOptions={tagpOptions}
                   defaultValue={data.tags.map(tagyToOption)}
                   onChange={(newValue) =>
                     setTags(newValue.map((item) => item.value))
