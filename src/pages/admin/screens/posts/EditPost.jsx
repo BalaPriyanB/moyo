@@ -21,7 +21,7 @@ import {
 import {
   tagyToOption,
   filterTags,
-} from "../../../../utils/multiSelectTagsUtils.js";
+} from "../../../../utils/multiSelectTagsUtils";
 
 const promiseOptions = async (inputValue) => {
   const { data: categoriesData } = await getAllCategories();
