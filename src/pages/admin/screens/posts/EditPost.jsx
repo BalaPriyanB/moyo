@@ -19,8 +19,8 @@ import {
 } from "../../../../utils/multiSelectTagUtils";
 
 import {
-  categoryToOption,
-  filterCategories,
+  tagyToOption,
+  filterTags,
 } from "../../../../utils/multiSelectTagsUtils.js";
 
 const promiseOptions = async (inputValue) => {
