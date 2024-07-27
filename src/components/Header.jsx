@@ -58,7 +58,6 @@ const NavItem = ({ item }) => {
 
 const Header = () => {
   const navigate = useNavigate();
-
   const [navIsVisible, setNavIsVisible] = useState(false);
   const userState = useSelector((state) => state.user);
 
@@ -68,13 +67,12 @@ const Header = () => {
 
   return (
     <section className="sticky top-0 left-0 right-0 z-50 bg-[#0D1017] text-white">
-      <header className="container mx-auto px-5 py-4 flex flex-col items-center lg:items-center">
+      <header className="container mx-auto px-5 py-4 flex flex-col items-center">
         <div className="w-full flex justify-between items-center mb-4 lg:mb-0">
-          <div className="flex-1 lg:hidden"></div>
           <Link to="/" className="flex items-center justify-center flex-1">
             <h1 className="text-white text-2xl font-bold">IXDUB</h1>
           </Link>
-          <div className="flex-1 flex justify-end items-center gap-4">
+          <div className="flex items-center gap-4">
             <AiOutlineBell className="w-6 h-6 cursor-pointer text-white" />
             <AiOutlineSearch className="w-6 h-6 cursor-pointer text-white" />
             <div className="lg:hidden">
