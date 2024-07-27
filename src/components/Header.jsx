@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { AiOutlineMenu, AiOutlineClose, AiOutlineSearch, AiOutlineBell } from "react-icons/ai";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { useSelector, useDispatch } from "react-redux";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 
 const navItemsInfo = [
   { name: "CATEGORY", type: "dropdown", items: [] }, // Add items for dropdown as needed
@@ -57,9 +57,7 @@ const NavItem = ({ item }) => {
 };
 
 const Header = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const [navIsVisible, setNavIsVisible] = useState(false);
   const userState = useSelector((state) => state.user);
@@ -72,24 +70,21 @@ const Header = () => {
     <section className="sticky top-0 left-0 right-0 z-50 bg-[#0D1017] text-white">
       <header className="container mx-auto px-5 py-4 flex flex-col items-center lg:items-center">
         <div className="w-full flex justify-between items-center mb-4 lg:mb-0">
-          <Link to="/" className="flex items-center">
+          <div className="flex-1 lg:hidden"></div>
+          <Link to="/" className="flex items-center justify-center flex-1">
             <h1 className="text-white text-2xl font-bold">IXDUB</h1>
           </Link>
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="flex-1 flex justify-end items-center gap-4">
             <AiOutlineBell className="w-6 h-6 cursor-pointer text-white" />
             <AiOutlineSearch className="w-6 h-6 cursor-pointer text-white" />
+            <div className="lg:hidden">
+              {navIsVisible ? (
+                <AiOutlineClose className="w-6 h-6 cursor-pointer text-white" onClick={navVisibilityHandler} />
+              ) : (
+                <AiOutlineMenu className="w-6 h-6 cursor-pointer text-white" onClick={navVisibilityHandler} />
+              )}
+            </div>
           </div>
-          <div className="lg:hidden flex items-center">
-            {navIsVisible ? (
-              <AiOutlineClose className="w-6 h-6 cursor-pointer text-white" onClick={navVisibilityHandler} />
-            ) : (
-              <AiOutlineMenu className="w-6 h-6 cursor-pointer text-white" onClick={navVisibilityHandler} />
-            )}
-          </div>
-        </div>
-        <div className="flex items-center justify-center mb-4 lg:hidden">
-          <AiOutlineBell className="w-6 h-6 cursor-pointer text-white mx-2" />
-          <AiOutlineSearch className="w-6 h-6 cursor-pointer text-white mx-2" />
         </div>
         <div
           className={`${
