@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { AiOutlineMenu, AiOutlineClose, AiOutlineSearch, AiOutlineBell } from "react-icons/ai";
 import { MdKeyboardArrowDown } from "react-icons/md";
+import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 
 const navItemsInfo = [
@@ -57,27 +58,24 @@ const NavItem = ({ item }) => {
 
 const Header = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const searchParamsValue = Object.fromEntries([...searchParams]);
-  const searchKeyword = searchParamsValue?.search || "";
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [navIsVisible, setNavIsVisible] = useState(false);
+  const userState = useSelector((state) => state.user);
 
   const navVisibilityHandler = () => {
     setNavIsVisible((curState) => !curState);
   };
 
-  const handleSearch = ({ searchKeyword }) => {
-    setSearchParams({ page: 1, search: searchKeyword });
-  };
-
   return (
     <section className="sticky top-0 left-0 right-0 z-50 bg-[#0D1017] text-white">
-      <header className="container mx-auto px-5 py-4">
+      <header className="container mx-auto px-5 py-4 flex flex-col items-center lg:items-center">
         <div className="w-full flex justify-between items-center mb-4 lg:mb-0">
           <Link to="/" className="flex items-center">
             <h1 className="text-white text-2xl font-bold">IXDUB</h1>
           </Link>
-          <div className="flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-4">
             <AiOutlineBell className="w-6 h-6 cursor-pointer text-white" />
             <AiOutlineSearch className="w-6 h-6 cursor-pointer text-white" />
           </div>
@@ -89,10 +87,14 @@ const Header = () => {
             )}
           </div>
         </div>
+        <div className="flex items-center justify-center mb-4 lg:hidden">
+          <AiOutlineBell className="w-6 h-6 cursor-pointer text-white mx-2" />
+          <AiOutlineSearch className="w-6 h-6 cursor-pointer text-white mx-2" />
+        </div>
         <div
           className={`${
             navIsVisible ? "right-0" : "-right-full"
-          } transition-all duration-300 bg-[#0D1017] lg:bg-transparent z-[49] flex flex-col w-full lg:w-auto justify-center lg:justify-end lg:flex-row fixed top-0 bottom-0 lg:static gap-x-9 items-center`}
+          } transition-all duration-300 lg:mt-0 bg-[#0D1017] lg:bg-transparent z-[49] flex flex-col w-full lg:w-auto justify-center lg:justify-center lg:flex-row fixed top-0 bottom-0 lg:static gap-x-9 items-center`}
         >
           <ul className="text-white items-center gap-y-5 lg:text-white flex flex-col lg:flex-row gap-x-4 font-semibold">
             {navItemsInfo.map((item) => (
