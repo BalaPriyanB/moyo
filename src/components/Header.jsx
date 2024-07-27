@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 const navItemsInfo = [
-  { name: "CATEGORY", type: "dropdown", items: [] }, // Add items for dropdown as needed
+  { name: "CATEGORY", type: "dropdown", items: [{title:"Action", href:"/blog?page=1&search=Action"},{title:"Action", href:"/blog?page=1&search=Action"},{title:"Adventure", href:"/blog?page=1&search=Adventure"},{title:"Comedy", href:"/blog?page=1&search=Comedy"},{title:"Thriller", href:"/blog?page=1&search=Thriller"},{title:"Romance", href:"/blog?page=1&search=Romance"}] }, // Add items for dropdown as needed
   { name: "GENRES", type: "link", href: "/genres" },
   { name: "LANGUAGE", type: "link", href: "/language" },
   { name: "DMCA", type: "link", href: "/dmca" },
