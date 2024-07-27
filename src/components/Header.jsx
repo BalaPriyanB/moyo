@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import { AiOutlineMenu, AiOutlineClose, AiOutlineSearch, AiOutlineBell } from "react-icons/ai";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-
-import { logout } from "../store/actions/user";
 
 const navItemsInfo = [
   { name: "CATEGORY", type: "dropdown", items: [] }, // Add items for dropdown as needed
@@ -63,18 +60,10 @@ const Header = () => {
   const searchParamsValue = Object.fromEntries([...searchParams]);
   const searchKeyword = searchParamsValue?.search || "";
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-
   const [navIsVisible, setNavIsVisible] = useState(false);
-  const userState = useSelector((state) => state.user);
-  const [profileDropdown, setProfileDropdown] = useState(false);
 
   const navVisibilityHandler = () => {
     setNavIsVisible((curState) => !curState);
-  };
-
-  const logoutHandler = () => {
-    dispatch(logout());
   };
 
   const handleSearch = ({ searchKeyword }) => {
@@ -83,12 +72,12 @@ const Header = () => {
 
   return (
     <section className="sticky top-0 left-0 right-0 z-50 bg-[#0D1017] text-white">
-      <header className="container mx-auto px-5 py-4 flex flex-col items-center lg:flex-row lg:justify-between">
+      <header className="container mx-auto px-5 py-4">
         <div className="w-full flex justify-between items-center mb-4 lg:mb-0">
           <Link to="/" className="flex items-center">
             <h1 className="text-white text-2xl font-bold">IXDUB</h1>
           </Link>
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="flex items-center gap-4">
             <AiOutlineBell className="w-6 h-6 cursor-pointer text-white" />
             <AiOutlineSearch className="w-6 h-6 cursor-pointer text-white" />
           </div>
@@ -103,66 +92,13 @@ const Header = () => {
         <div
           className={`${
             navIsVisible ? "right-0" : "-right-full"
-          } transition-all duration-300 mt-[56px] lg:mt-0 bg-[#0D1017] lg:bg-transparent z-[49] flex flex-col w-full lg:w-auto justify-center lg:justify-end lg:flex-row fixed top-0 bottom-0 lg:static gap-x-9 items-center`}
+          } transition-all duration-300 bg-[#0D1017] lg:bg-transparent z-[49] flex flex-col w-full lg:w-auto justify-center lg:justify-end lg:flex-row fixed top-0 bottom-0 lg:static gap-x-9 items-center`}
         >
           <ul className="text-white items-center gap-y-5 lg:text-white flex flex-col lg:flex-row gap-x-4 font-semibold">
             {navItemsInfo.map((item) => (
               <NavItem key={item.name} item={item} />
             ))}
           </ul>
-          <div className="flex items-center gap-x-4 lg:hidden mt-4">
-            <AiOutlineBell className="w-6 h-6 cursor-pointer text-white" />
-            <AiOutlineSearch className="w-6 h-6 cursor-pointer text-white" />
-          </div>
-          {userState.userInfo ? (
-            <div className="relative group mt-4 lg:mt-0">
-              <button
-                className="flex gap-x-1 items-center border-2 border-red-500 px-6 py-2 rounded-full text-red-500 font-semibold hover:bg-red-500 hover:text-white transition-all duration-300"
-                onClick={() => setProfileDropdown(!profileDropdown)}
-              >
-                <span>Account</span>
-                <MdKeyboardArrowDown />
-              </button>
-              <div
-                className={`${
-                  profileDropdown ? "block" : "hidden"
-                } lg:hidden transition-all duration-500 pt-4 lg:absolute lg:bottom-0 lg:right-0 lg:transform lg:translate-y-full lg:group-hover:block w-max`}
-              >
-                <ul className="bg-dark-soft lg:bg-transparent text-center flex flex-col shadow-lg rounded-lg overflow-hidden">
-                  {userState?.userInfo?.admin && (
-                    <button
-                      onClick={() => navigate("/admin")}
-                      type="button"
-                      className="hover:bg-dark-hard hover:text-white px-4 py-2 text-white lg:text-dark-soft"
-                    >
-                      Admin Dashboard
-                    </button>
-                  )}
-                  <button
-                    onClick={() => navigate("/profile")}
-                    type="button"
-                    className="hover:bg-dark-hard hover:text-white px-4 py-2 text-white lg:text-dark-soft"
-                  >
-                    Profile Page
-                  </button>
-                  <button
-                    onClick={logoutHandler}
-                    type="button"
-                    className="hover:bg-dark-hard hover:text-white px-4 py-2 text-white lg:text-dark-soft"
-                  >
-                    Logout
-                  </button>
-                </ul>
-              </div>
-            </div>
-          ) : (
-            <button
-              onClick={() => navigate("/login")}
-              className="mt-4 lg:mt-0 border-2 border-red-500 px-6 py-2 rounded-full text-red-500 font-semibold hover:bg-red-500 hover:text-white transition-all duration-300"
-            >
-              Sign in
-            </button>
-          )}
         </div>
       </header>
       <hr className="w-full border-t border-gray-700 mt-4" />
